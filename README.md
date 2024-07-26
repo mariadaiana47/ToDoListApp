@@ -5,5 +5,3 @@ A simple To-Do List app to manage tasks efficiently. Features include adding tas
 ## Deployment
 
 You can check out the live app [here](https://vercel.com/daianas-projects-dfbaee25/to-do-list-app).
-
-![Deployment Status](https://img.shields.io/badge/deployed%20on-Vercel-brightgreen)
