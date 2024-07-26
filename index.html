@@ -306,7 +306,7 @@
             border: none;
             font-size: 18px;
             cursor: pointer;
-            color: #fff; 
+            color: #fff;
             padding: 5px;
             border-radius: 50%;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -449,6 +449,7 @@
             color: #fff;
         }
 
+       
         @media (max-width: 1200px) {
             .task-wrapper {
                 flex-direction: column;
@@ -568,10 +569,10 @@
         </div>
         <div class="calendar">
             <div class="calendar-header">
-            <button class="prev" onclick="prevMonth()">&#9664;</button>
-            <span id="calendar-month"></span>
-            <button class="next" onclick="nextMonth()">&#9654;</button>
-        </div>
+                <button class="prev" onclick="prevMonth()">&#9664;</button>
+                <span id="calendar-month"></span>
+                <button class="next" onclick="nextMonth()">&#9654;</button>
+            </div>
             <div class="calendar-grid" id="calendar-grid"></div>
         </div>
     </div>
@@ -607,6 +608,7 @@
             showTask();
             renderCalendar();
 
+            
             flatpickr("#date-select", {
                 locale: "en",
                 dateFormat: "d/m/Y"
@@ -625,6 +627,7 @@
                 document.body.classList.add('dark-theme');
             }
         }
+        
     </script>
     <script src="script.js"></script>
 </body>
