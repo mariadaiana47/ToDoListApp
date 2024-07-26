@@ -340,39 +340,22 @@ button {
     white-space: nowrap;
     color: #000;
 }
-.tooltip {
-    display: none;
-    position: absolute;
-    background: #fff;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 10;
-    white-space: nowrap;
-    color: #000;
-}
-
 .tooltip .tooltip-header {
     display: flex;
     align-items: center;
     margin-bottom: 5px;
 }
-
 .tooltip .tooltip-header img {
     width: 16px;
     height: 16px;
     margin-right: 5px;
 }
-
 .tooltip .tooltip-header span {
     font-weight: bold;
 }
-
 .calendar-day.task:hover .tooltip {
     display: block;
 }
-
 .empty-cell {
     display: none;
 }
