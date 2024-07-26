@@ -55,16 +55,19 @@
             display: flex;
             flex-direction: row;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             gap: 20px;
             width: 100%;
+            flex-wrap: wrap;
         }
         .task-settings, .task-list {
-            flex: 1;
             background: #fff;
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: calc(50% - 10px);
+            min-width: 300px;
+            margin-bottom: 20px;
         }
         .task-settings {
             display: flex;
@@ -303,7 +306,7 @@
             border: none;
             font-size: 18px;
             cursor: pointer;
-            color: #fff; /* Change arrow color for light theme */
+            color: #fff;
             padding: 5px;
             border-radius: 50%;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -319,7 +322,7 @@
             right: 0;
         }
         .calendar-header span {
-            color: #fff; /* Change month text color for light theme */
+            color: #fff;
         }
         .calendar-header button:hover {
             background: #ffa600;
@@ -446,7 +449,7 @@
             color: #fff;
         }
 
-        /* Media Queries for Responsive Design */
+       
         @media (max-width: 1200px) {
             .task-wrapper {
                 flex-direction: column;
@@ -604,6 +607,7 @@
             populateTimeSelectors();
             showTask();
             renderCalendar();
+
             
             flatpickr("#date-select", {
                 locale: "en",
@@ -624,6 +628,7 @@
             }
         }
 
+        
     </script>
     <script src="script.js"></script>
 </body>
