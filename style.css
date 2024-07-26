@@ -289,7 +289,7 @@ button {
 .calendar-header {
     position: relative;
     display: flex;
-    justify-content: space-between; /* Schimbat de la center la space-between */
+    justify-content: space-between;
     align-items: center;
     padding: 0 20px;
 }
@@ -299,7 +299,7 @@ button {
     border: none;
     font-size: 18px;
     cursor: pointer;
-    color: #fff; 
+    color: #fff;
     padding: 5px;
     border-radius: 50%;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -308,8 +308,8 @@ button {
 
 .calendar-header span {
     color: #fff;
-    flex-grow: 1; 
-    text-align: center; 
+    flex-grow: 1;
+    text-align: center;
 }
 
 .calendar-header button:hover {
@@ -321,14 +321,16 @@ button {
     .calendar-header button {
         font-size: 16px;
     }
+
+    .calendar-header span {
+        font-size: 16px;
+    }
+
+    .calendar-day {
+        height: 30px;
+    }
 }
 
-.calendar-header button.prev {
-    left: 10px;
-}
-.calendar-header button.next {
-    right: 10px; 
-}
 .calendar-header span {
     color: #fff;
     z-index: 0; 
