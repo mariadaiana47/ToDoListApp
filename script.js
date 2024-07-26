@@ -41,7 +41,7 @@ function closeModal() {
 function saveTask() {
     const taskText = document.getElementById("modal-input-box").value;
     const priority = document.getElementById("modal-priority-select").value;
-    const reminder = ${document.getElementById("modal-hour-select").value}:${document.getElementById("modal-minute-select").value}:00;
+    const reminder = `${document.getElementById("modal-hour-select").value}:${document.getElementById("modal-minute-select").value}:00`;
     const category = document.getElementById("modal-category-select").value;
     const date = document.getElementById("modal-date-select").value;
 
@@ -72,7 +72,7 @@ function addTask() {
             text: inputBox.value,
             category: categorySelect.value,
             priority: prioritySelect.value,
-            reminder: ${hourSelect.value}:${minuteSelect.value}:00,
+            reminder: `${hourSelect.value}:${minuteSelect.value}:00`,
             date: dateSelect.value
         };
         taskList.push(task);
@@ -154,7 +154,7 @@ function updateTaskList() {
                 break;
         }
 
-        li.innerHTML = 
+        li.innerHTML = `
             <span class="task-text">
                 ${task.text}
             </span>
@@ -163,7 +163,7 @@ function updateTaskList() {
                 ${task.priority}
             </span> 
             <span class="delete" onclick="deleteTask(${taskList.indexOf(task)})">\u00d7</span>
-        ;
+        `;
         
         switch(task.category) {
             case "Work":
@@ -192,7 +192,7 @@ function scheduleNotification(task) {
 
     if (timeToReminder > 0) {
         setTimeout(() => {
-            showNotification(Reminder: ${task.text});
+            showNotification(`Reminder: ${task.text}`);
         }, timeToReminder);
     } else {
         console.warn('The reminder time has already passed for task:', task.text);
@@ -202,9 +202,9 @@ function scheduleNotification(task) {
 function showNotification(message) {
     const notification = document.createElement('div');
     notification.classList.add('notification');
-    notification.innerHTML = 
+    notification.innerHTML = `
         <p>${message}</p>
-    ;
+    `;
     notificationContainer.appendChild(notification);
 
     notificationSound.play();
@@ -217,9 +217,9 @@ function showNotification(message) {
 function showSuccessNotification(message) {
     const successNotification = document.createElement('div');
     successNotification.classList.add('notification', 'success-notification');
-    successNotification.innerHTML = 
+    successNotification.innerHTML = `
         <p>${message}</p>
-    ;
+    `;
     notificationContainer.appendChild(successNotification);
 
     setTimeout(() => {
