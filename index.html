@@ -6,7 +6,6 @@
     <title>To-Do List</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <style>
-        
         * {
             margin: 0;
             padding: 0;
@@ -55,16 +54,19 @@
             display: flex;
             flex-direction: row;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             gap: 20px;
             width: 100%;
+            flex-wrap: wrap;
         }
         .task-settings, .task-list {
-            flex: 1;
             background: #fff;
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: calc(50% - 10px);
+            min-width: 300px;
+            margin-bottom: 20px;
         }
         .task-settings {
             display: flex;
@@ -445,6 +447,67 @@
         .dark-theme ::placeholder {
             color: #fff;
         }
+        @media (max-width: 1200px) {
+            .task-wrapper {
+                flex-direction: column;
+            }
+
+            .task-settings, .task-list {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+        @media (max-width: 768px) {
+            .row, .reminder-row, .category-row, .date-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .row input, .reminder-row select, .category-row select, .date-row input, button {
+                margin-left: 0;
+                margin-top: 10px;
+                width: 100%;
+            }
+
+            .reminder-row label, .category-row label, .date-row label {
+                margin-bottom: 10px;
+                text-align: left;
+            }
+
+            .task-list {
+                padding: 0 10px;
+            }
+
+            .calendar {
+                width: calc(100% - 20px);
+                padding: 10px;
+            }
+        }
+        @media (max-width: 480px) {
+            .task-wrapper {
+                padding: 0 10px;
+            }
+
+            .calendar-header span {
+                font-size: 14px;
+            }
+
+            .calendar-day {
+                height: 30px;
+            }
+
+            .calendar-header button {
+                font-size: 16px; 
+            }
+
+            .calendar-header button.prev {
+                left: 5px; 
+            }
+
+            .calendar-header button.next {
+                right: 5px; 
+            }
+        }
     </style>
 </head>
 <body>
@@ -552,7 +615,6 @@
             showTask();
             renderCalendar();
 
-            // Initialize Flatpickr for date inputs
             flatpickr("#date-select", {
                 locale: "en",
                 dateFormat: "d/m/Y"
@@ -571,8 +633,6 @@
                 document.body.classList.add('dark-theme');
             }
         }
-
-        
     </script>
     <script src="script.js"></script>
 </body>
