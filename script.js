@@ -5,12 +5,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     flatpickr("#date-select", {
         locale: "en",
-        dateFormat: "Y-m-d"
+        dateFormat: "d/m/Y"
     });
 
     flatpickr("#modal-date-select", {
         locale: "en",
-        dateFormat: "Y-m-d"
+        dateFormat: "d/m/Y"
     });
 });
 
@@ -141,7 +141,6 @@ function updateTaskList() {
     taskList.forEach(task => {
         let li = document.createElement("li");
         let priorityImage = '';
-        let categoryImage = '';
         switch(task.priority) {
             case "High":
                 priorityImage = 'images/icons8-high-priority-48.png';
@@ -252,8 +251,7 @@ function renderCalendar() {
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-    // Convert month and year to English
-    const monthYearString = new Date(year, month).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+    const monthYearString = `${months[month]} ${year}`;
     document.getElementById("calendar-month").textContent = monthYearString;
 
     for (let i = 0; i < firstDay; i++) {
@@ -269,10 +267,7 @@ function renderCalendar() {
 
         const tasksForDay = taskList.filter(task => {
             const taskDate = new Date(task.date);
-            const taskYear = taskDate.getFullYear();
-            const taskMonth = taskDate.getMonth();
-            const taskDay = taskDate.getDate();
-            return taskYear === year && taskMonth === month && taskDay === day;
+            return taskDate.getFullYear() === year && taskDate.getMonth() === month && taskDate.getDate() === day;
         });
 
         if (tasksForDay.length > 0) {
@@ -282,7 +277,12 @@ function renderCalendar() {
 
             tasksForDay.forEach(task => {
                 const taskElement = document.createElement("div");
-                taskElement.textContent = task.text;
+                taskElement.innerHTML = `
+                    <div class="tooltip-header">
+                        <img src="images/${task.category.toLowerCase()}-icon.png" alt="${task.category}">
+                        <span>${task.text}</span>
+                    </div>
+                `;
                 tooltip.appendChild(taskElement);
             });
 
@@ -310,4 +310,3 @@ function nextMonth() {
     }
     renderCalendar();
 }
-
