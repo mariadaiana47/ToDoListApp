@@ -306,7 +306,7 @@
             border: none;
             font-size: 18px;
             cursor: pointer;
-            color: #fff;
+            color: #fff; 
             padding: 5px;
             border-radius: 50%;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -449,7 +449,6 @@
             color: #fff;
         }
 
-       
         @media (max-width: 1200px) {
             .task-wrapper {
                 flex-direction: column;
@@ -608,7 +607,6 @@
             showTask();
             renderCalendar();
 
-            
             flatpickr("#date-select", {
                 locale: "en",
                 dateFormat: "d/m/Y"
@@ -627,8 +625,6 @@
                 document.body.classList.add('dark-theme');
             }
         }
-
-        
     </script>
     <script src="script.js"></script>
 </body>
