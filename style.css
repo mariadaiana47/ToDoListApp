@@ -272,14 +272,13 @@ button {
     transform: translateY(-50%);
 }
 .calendar-header button:hover {
-    background: #ffa600; /* Fundal portocaliu la hover */
-    color: #fff; /* Culoare albă la hover */
+    background: #ffa600; 
+    color: #fff; 
 }
 .calendar-header button.prev {
-    left: 0; /* Plasează săgeata din stânga în extrema stângă */
-}
+    left: 0; 
 .calendar-header button.next {
-    right: 0; /* Plasează săgeata din dreapta în extrema dreaptă */
+    right: 0; 
 }
 .calendar-grid {
     display: grid;
@@ -296,22 +295,22 @@ button {
     align-items: center;
     border-radius: 5px;
     background: #f8f9fa;
-    cursor: default; /* Change cursor to default */
+    cursor: default; 
     position: relative;
-    pointer-events: none; /* Disable pointer events */
+    pointer-events: none;
 }
 
 .calendar-day.task {
-    background-color: #32CD32; /* Green background for task cells */
-    color: #fff; /* White text color for better contrast */
-    border: 2px solid #228B22; /* Optional: Add a border for better visibility */
+    background-color: #32CD32; 
+    color: #fff; 
+    border: 2px solid #228B22; 
 }
 .calendar-day.task-day {
     background-color: lightgreen;
 }
 
 .calendar-day.task .tooltip {
-    pointer-events: auto; /* Allow pointer events on tooltips */
+    pointer-events: auto; 
 }
 
 .calendar-day:hover .tooltip {
