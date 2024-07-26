@@ -6,7 +6,6 @@
     <title>To-Do List</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <style>
-        
         * {
             margin: 0;
             padding: 0;
@@ -30,6 +29,7 @@
             align-items: center;
             max-width: 1200px;
             width: 100%;
+            padding: 20px;
         }
         .theme-toggle {
             position: absolute;
@@ -445,6 +445,59 @@
         .dark-theme ::placeholder {
             color: #fff;
         }
+
+        /* Media Queries for Responsive Design */
+        @media (max-width: 1200px) {
+            .task-wrapper {
+                flex-direction: column;
+            }
+
+            .task-settings, .task-list {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .row, .reminder-row, .category-row, .date-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .row input, .reminder-row select, .category-row select, .date-row input, button {
+                margin-left: 0;
+                margin-top: 10px;
+                width: 100%;
+            }
+
+            .reminder-row label, .category-row label, .date-row label {
+                margin-bottom: 10px;
+                text-align: left;
+            }
+
+            .task-list {
+                padding: 0 10px;
+            }
+
+            .calendar {
+                width: calc(100% - 20px);
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .task-wrapper {
+                padding: 0 10px;
+            }
+
+            .calendar-header span {
+                font-size: 14px;
+            }
+
+            .calendar-day {
+                height: 30px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -551,8 +604,7 @@
             populateTimeSelectors();
             showTask();
             renderCalendar();
-
-            // Initialize Flatpickr for date inputs
+            
             flatpickr("#date-select", {
                 locale: "en",
                 dateFormat: "d/m/Y"
@@ -572,7 +624,6 @@
             }
         }
 
-        // Other existing functions...
     </script>
     <script src="script.js"></script>
 </body>
