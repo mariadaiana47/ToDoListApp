@@ -5,12 +5,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     flatpickr("#date-select", {
         locale: "en",
-        dateFormat: "d/m/Y"
+        dateFormat: "Y-m-d"
     });
 
     flatpickr("#modal-date-select", {
         locale: "en",
-        dateFormat: "d/m/Y"
+        dateFormat: "Y-m-d"
     });
 });
 
@@ -41,7 +41,7 @@ function closeModal() {
 function saveTask() {
     const taskText = document.getElementById("modal-input-box").value;
     const priority = document.getElementById("modal-priority-select").value;
-    const reminder = `${document.getElementById("modal-hour-select").value}:${document.getElementById("modal-minute-select").value}:00`;
+    const reminder = ${document.getElementById("modal-hour-select").value}:${document.getElementById("modal-minute-select").value}:00;
     const category = document.getElementById("modal-category-select").value;
     const date = document.getElementById("modal-date-select").value;
 
@@ -72,7 +72,7 @@ function addTask() {
             text: inputBox.value,
             category: categorySelect.value,
             priority: prioritySelect.value,
-            reminder: `${hourSelect.value}:${minuteSelect.value}:00`,
+            reminder: ${hourSelect.value}:${minuteSelect.value}:00,
             date: dateSelect.value
         };
         taskList.push(task);
@@ -141,6 +141,7 @@ function updateTaskList() {
     taskList.forEach(task => {
         let li = document.createElement("li");
         let priorityImage = '';
+        let categoryImage = '';
         switch(task.priority) {
             case "High":
                 priorityImage = 'images/icons8-high-priority-48.png';
@@ -153,7 +154,7 @@ function updateTaskList() {
                 break;
         }
 
-        li.innerHTML = `
+        li.innerHTML = 
             <span class="task-text">
                 ${task.text}
             </span>
@@ -162,7 +163,7 @@ function updateTaskList() {
                 ${task.priority}
             </span> 
             <span class="delete" onclick="deleteTask(${taskList.indexOf(task)})">\u00d7</span>
-        `;
+        ;
         
         switch(task.category) {
             case "Work":
@@ -191,7 +192,7 @@ function scheduleNotification(task) {
 
     if (timeToReminder > 0) {
         setTimeout(() => {
-            showNotification(`Reminder: ${task.text}`);
+            showNotification(Reminder: ${task.text});
         }, timeToReminder);
     } else {
         console.warn('The reminder time has already passed for task:', task.text);
@@ -201,9 +202,9 @@ function scheduleNotification(task) {
 function showNotification(message) {
     const notification = document.createElement('div');
     notification.classList.add('notification');
-    notification.innerHTML = `
+    notification.innerHTML = 
         <p>${message}</p>
-    `;
+    ;
     notificationContainer.appendChild(notification);
 
     notificationSound.play();
@@ -216,9 +217,9 @@ function showNotification(message) {
 function showSuccessNotification(message) {
     const successNotification = document.createElement('div');
     successNotification.classList.add('notification', 'success-notification');
-    successNotification.innerHTML = `
+    successNotification.innerHTML = 
         <p>${message}</p>
-    `;
+    ;
     notificationContainer.appendChild(successNotification);
 
     setTimeout(() => {
@@ -251,7 +252,8 @@ function renderCalendar() {
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-    const monthYearString = `${months[month]} ${year}`;
+    // Convert month and year to English
+    const monthYearString = new Date(year, month).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
     document.getElementById("calendar-month").textContent = monthYearString;
 
     for (let i = 0; i < firstDay; i++) {
@@ -267,7 +269,10 @@ function renderCalendar() {
 
         const tasksForDay = taskList.filter(task => {
             const taskDate = new Date(task.date);
-            return taskDate.getFullYear() === year && taskDate.getMonth() === month && taskDate.getDate() === day;
+            const taskYear = taskDate.getFullYear();
+            const taskMonth = taskDate.getMonth();
+            const taskDay = taskDate.getDate();
+            return taskYear === year && taskMonth === month && taskDay === day;
         });
 
         if (tasksForDay.length > 0) {
@@ -277,12 +282,7 @@ function renderCalendar() {
 
             tasksForDay.forEach(task => {
                 const taskElement = document.createElement("div");
-                taskElement.innerHTML = `
-                    <div class="tooltip-header">
-                        <img src="images/${task.category.toLowerCase()}-icon.png" alt="${task.category}">
-                        <span>${task.text}</span>
-                    </div>
-                `;
+                taskElement.textContent = task.text;
                 tooltip.appendChild(taskElement);
             });
 
